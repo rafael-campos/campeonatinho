@@ -18,6 +18,13 @@ export async function POST(request: Request) {
       );
     }
 
+    console.log({
+      game_id,
+      user_id: user.id,
+      home_guess: Number(home_guess),
+      away_guess: Number(away_guess),
+    });
+
     const { error } = await supabase.from("guesses").upsert(
       {
         game_id,
