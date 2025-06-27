@@ -27,6 +27,7 @@ export function PredictionModal({
 	onClose,
 	selectedGame,
 	onSaveGuess,
+	onGuessSaved,
 	userGuesses,
 	currentUserId,
 }: PredictionModalProps) {
