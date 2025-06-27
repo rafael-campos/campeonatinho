@@ -28,6 +28,7 @@ export default function HomePage() {
 	const [selectedGame, setSelectedGame] = useState<GameWithTeams | null>(null);
 	const [isModalOpen, setIsModalOpen] = useState(false);
 	const [currentUser, setCurrentUser] = useState<User | null>(null);
+	const [refreshTrigger, setRefreshTrigger] = useState(0);
 
 	useEffect(() => {
 		const loadData = async () => {
