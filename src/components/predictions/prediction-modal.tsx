@@ -165,7 +165,7 @@ export function PredictionModal({
 							</Button>
 						</div>
 					) : (
-						<div className="space-y-4 pt-4 border-t border-gray-100 text-center">
+						<div className="space-y-4 pt-4 border-t border-gray-100">
 							<p className="text-lg font-semibold text-gray-800">
 								Tem certeza que deseja salvar este palpite?
 							</p>

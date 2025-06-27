@@ -104,47 +104,21 @@ export function LeaderboardTable() {
 									P
 								</th>
 							</tr>
-						</thead>
-						<tbody className="bg-white divide-y divide-gray-200 font-bold">
-							{leaderboard.map((entry, index) => (
-								<tr key={entry.profile.id} className="hover:bg-gray-50">
-									<td className="w-12 pl-2 py-4 whitespace-nowrap text-xl font-bold text-gray-500 text-center">
-										{actualPositions[index]}º
-									</td>
-									<td className="px-6 pl-2 py-4 whitespace-nowrap">
-										<div className="flex items-center">
-											<div className="flex-shrink-0 h-10 w-10 relative">
-												{entry.profile.avatar_url ? (
-													<Image
-														src={entry.profile.avatar_url}
-														alt={entry.profile.name || ""}
-														fill
-														className="rounded-full object-cover"
-													/>
-												) : (
-													<div className="h-10 w-10 rounded-full bg-gray-200 flex items-center justify-center">
-														<span className="text-gray-500 text-lg">
-															{entry.profile.name?.[0]?.toUpperCase() || "?"}
-														</span>
-													</div>
-												)}
-											</div>
-											<div className="ml-4">
-												<div className="text-sm text-gray-900">
-													{entry.profile.name?.split(' ')[0]}
-												</div>
-											</div>
-										</div>
-									</td>
-									<td className="px-6 py-4 whitespace-nowrap text-sm text-center text-gray-500">
-										{entry.exactScoreHits}
-									</td>
-									<td className="px-6 py-4 whitespace-nowrap text-sm text-center text-gray-500">
-										{entry.winnerHits}
-									</td>
-									<td className="px-6 py-4 whitespace-nowrap text-sm text-center text-gray-900">
-										{entry.totalPoints}
-									</td>
+						</thead><tbody className="bg-white divide-y divide-gray-200 font-bold">{leaderboard.map((entry, index) => (<tr key={entry.profile.id} className="hover:bg-gray-50"><td className="w-12 pl-2 py-4 whitespace-nowrap text-xl font-bold text-gray-500 text-center">{actualPositions[index]}º</td><td className="px-6 pl-2 py-4 whitespace-nowrap"><div className="flex items-center"><div className="flex-shrink-0 h-10 w-10 relative">{entry.profile.avatar_url ? (
+								<Image
+									src={entry.profile.avatar_url}
+									alt={entry.profile.name || ""}
+									width={40}
+									height={40}
+									className="rounded-full object-cover"
+								/>
+							) : (
+								<div className="h-10 w-10 rounded-full bg-gray-200 flex items-center justify-center">
+									<span className="text-gray-500 text-lg">
+										{entry.profile.name?.[0]?.toUpperCase() || "?"}
+									</span>
+								</div>
+							)}</div><div className="ml-4"><div className="text-sm text-gray-900">{entry.profile.name?.split(' ')[0]}</div></div></div></td><td className="px-6 py-4 whitespace-nowrap text-sm text-center text-gray-500">{entry.exactScoreHits}</td><td className="px-6 py-4 whitespace-nowrap text-sm text-center text-gray-500">{entry.winnerHits}</td><td className="px-6 py-4 whitespace-nowrap text-sm text-center text-gray-900">{entry.totalPoints}</td>
 								</tr>
 							))}
 						</tbody>

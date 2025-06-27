@@ -32,7 +32,7 @@ export function ChampionTeamBet({ currentUserId }: ChampionTeamBetProps) {
 	const [userHasBet, setUserHasBet] = useState(false);
 
 	const isBettingOpen = () => {
-		const deadline = new Date("2025-06-18T23:59:59-03:00");
+		const deadline = new Date("2025-06-28T12:59:59-03:00");
 		const now = new Date();
 		return now.getTime() <= deadline.getTime();
 	};
@@ -164,7 +164,7 @@ export function ChampionTeamBet({ currentUserId }: ChampionTeamBetProps) {
 										</p>
 									</div>
 								</div>
-								<div className="pl-14 space-y-2">
+																				<div className="pl-14 space-y-2">
 									{group.users.map((user) => (
 										<div
 											key={user.name}

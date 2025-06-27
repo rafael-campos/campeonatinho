@@ -16,18 +16,11 @@ export default function LoginPage() {
 				{/* Coluna da Esquerda - Login */}
 				<div className="bg-white shadow-lg rounded-lg overflow-hidden h-fit ">
 					<div className="relative w-full h-[400px] shadow-md">
-						<Image
-							src="/palpit.png"
-							alt="Palp.it"
-							fill
-							className="object-cover"
-							priority
-							quality={100}
-						/>
+						<img src="/og-image.png" alt="Rafa.bet" className="object-cover w-full h-full" />
 					</div>
 					<div className="p-8">
 						<div className="text-center mb-8">
-							<h1 className="text-2xl font-bold text-gray-900 mb-2">Palp.it</h1>
+							<h1 className="text-2xl font-bold text-gray-900 mb-2">Rafa.bet</h1>
 							<p className="text-gray-600">
 								Entre com sua conta Google para começar
 							</p>
@@ -81,7 +74,7 @@ export default function LoginPage() {
 							</h3>
 							<ul className="list-disc list-inside text-gray-600 space-y-1">
 								<li>Todos os jogos do Super Mundial disponíveis</li>
-								<li>Valor de entrada: R$ 50,00 por participante</li>
+								
 								<li>Vencedor: maior pontuação total</li>
 							</ul>
 						</div>
@@ -111,11 +104,11 @@ export default function LoginPage() {
 						{/* Time Brasileiro */}
 						<div>
 							<h3 className="font-semibold text-gray-900 mb-2 flex items-center gap-2">
-								<span className="text-2xl">🇧🇷</span>
+								
 								Palpite bônus — Time brasileiro
 							</h3>
 							<p className="text-gray-600">
-								30 pontos bônus divididos entre os acertadores do time
+								3 pontos bônus divididos entre os acertadores do time
 								brasileiro que for mais longe.
 							</p>
 						</div>
@@ -132,16 +125,7 @@ export default function LoginPage() {
 							</p>
 						</div>
 
-						{/* Premiação */}
-						<div>
-							<h3 className="font-semibold text-gray-900 mb-2 flex items-center gap-2">
-								<Award className="w-5 h-5 text-gray-600" />
-								Premiação
-							</h3>
-							<p className="text-gray-600">
-								Vencedor leva 100% do valor arrecadado no bolão.
-							</p>
-						</div>
+						
 
 						{/* Responsabilidades */}
 						<div className="bg-gray-50 p-4 rounded-lg border border-gray-200">

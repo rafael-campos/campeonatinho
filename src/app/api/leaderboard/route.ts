@@ -5,6 +5,13 @@ import { NextResponse } from "next/server";
 export async function GET() {
   try {
     const supabase = createRouteHandlerClient({ cookies });
+
+    // --- START: Logic for Furthest Brazilian Team Bonus ---
+    // TODO: Este ID precisa ser atualizado manualmente ou via uma interface de administração
+    // assim que o torneio progredir e o time brasileiro que for mais longe for conhecido.
+    // Para testes, você pode defini-lo para um ID de um time brasileiro da sua tabela 'teams'.
+    const FURTHEST_BRAZILIAN_TEAM_ID = ""; // Ex: "e82bb843-1d9f-4c0f-a949-e7b4f5d7f100" para o Palmeiras
+    // --- END: Logic for Furthest Brazilian Team Bonus ---
     
     // Buscar todos os perfis
     const { data: profiles, error: profilesError } = await supabase
@@ -25,15 +32,26 @@ export async function GET() {
     // Buscar todos os palpites
     const { data: guesses, error: guessesError } = await supabase
       .from("guesses")
-      .select("*");
+      .select("*, user_id, game_id, home_guess, away_guess");
 
     if (guessesError) throw guessesError;
+
+    // Buscar todos os palpites de time brasileiro
+    const { data: brazilBets, error: brazilBetsError } = await supabase
+      .from("brazil_bet")
+      .select("user_id, team_id");
+
+    if (brazilBetsError) throw brazilBetsError;
+
+    const brazilBetsMap = new Map(brazilBets.map(bet => [bet.user_id, bet.team_id]));
+
 
     // Calcular pontuação para cada perfil
     const leaderboardData = profiles.map((profile) => {
       const userGuesses = guesses.filter((g) => g.user_id === profile.id);
       let exactScoreHits = 0;
       let winnerHits = 0;
+      let brazilBonusPoints = 0; // Initialize bonus points
 
       userGuesses.forEach((guess) => {
         const game = games.find((g) => g.id === guess.game_id);
@@ -67,11 +85,17 @@ export async function GET() {
         }
       });
 
+      // Adicionar pontos bônus para o palpite do time brasileiro
+      const userBrazilBetTeamId = brazilBetsMap.get(profile.id);
+      if (userBrazilBetTeamId && userBrazilBetTeamId === FURTHEST_BRAZILIAN_TEAM_ID) {
+          brazilBonusPoints = 3;
+      }
+
       return {
         profile,
         exactScoreHits,
         winnerHits,
-        totalPoints: exactScoreHits * 3 + winnerHits,
+        totalPoints: exactScoreHits * 3 + winnerHits + brazilBonusPoints, // Adicionar pontos bônus aqui
       };
     });
 

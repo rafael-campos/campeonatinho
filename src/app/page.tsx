@@ -135,7 +135,7 @@ export default function HomePage() {
 		<div className="min-h-screen bg-gray-50">
 			<header className="bg-white shadow-sm border-b border-gray-200">
 				<div className="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
-					<h1 className="text-2xl font-bold text-gray-900">Palp.it</h1>
+					<h1 className="text-2xl font-bold text-gray-900">Rafa.bet</h1>
 					<div className="flex items-center gap-4">
 						{currentUser && (
 							<div className="flex items-center gap-2">
@@ -191,11 +191,9 @@ export default function HomePage() {
 			<footer className="bg-white shadow-sm border-t border-gray-200 w-full z-[4] py-4">
 				<div className="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center flex-col md:flex-row gap-2">
 					<p className="text-sm text-gray-600">
-						© 2025 Palp.it - Todos os direitos reservados
+						© 2025 Rafa.bet - Todos os direitos reservados
 					</p>
-					<p className="text-sm text-gray-600">
-						O palmeiras não tem mundial! 🏆
-					</p>
+					
 				</div>
 			</footer>
 
