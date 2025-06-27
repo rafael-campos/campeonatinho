@@ -16,7 +16,14 @@ export default function LoginPage() {
 				{/* Coluna da Esquerda - Login */}
 				<div className="bg-white shadow-lg rounded-lg overflow-hidden h-fit ">
 					<div className="relative w-full h-[400px] shadow-md">
-						<img src="/og-image.png" alt="Rafa.bet" className="object-cover w-full h-full" />
+						<Image
+							src="/logo-mundial.webp"
+							alt="Rafa.bet"
+							fill
+							className="object-cover"
+							priority
+							quality={100}
+						/>
 					</div>
 					<div className="p-8">
 						<div className="text-center mb-8">
