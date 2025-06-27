@@ -12,6 +12,7 @@ interface PredictionModalProps {
 	onClose: () => void;
 	selectedGame: GameWithTeams | null;
 	onSaveGuess: (homeGuess: number, awayGuess: number) => void;
+	onGuessSaved: () => void;
 	userGuesses: Record<string, { home_guess: number; away_guess: number }>;
 	currentUserId: string | null;
 }
@@ -82,7 +83,7 @@ export function PredictionModal({
 			}
 
 			onSaveGuess(Number(homeGuessInput), Number(awayGuessInput));
-			router.refresh();
+			onGuessSaved();
 		} catch (error) {
 			console.error("Erro ao salvar palpite:", error);
 		} finally {

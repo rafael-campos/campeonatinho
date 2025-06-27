@@ -51,11 +51,7 @@ export default function LoginPage() {
 								},
 							}}
 							providers={["google"]}
-							redirectTo={
-								typeof window !== "undefined"
-									? `${window.location.origin}/auth/callback`
-									: ""
-							}
+							redirectTo="/auth/callback"
 							view="sign_in"
 							showLinks={false}
 							onlyThirdPartyProviders={true}

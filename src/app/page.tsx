@@ -110,7 +110,7 @@ export default function HomePage() {
 				away_guess: awayGuess,
 			},
 		}));
-		router.refresh();
+		setRefreshTrigger((prev) => prev + 1);
 	};
 
 	const handleSignOut = async () => {
@@ -119,7 +119,7 @@ export default function HomePage() {
 			console.error("Erro ao sair:", error.message);
 		} else {
 			router.push("/login");
-			router.refresh();
+			setRefreshTrigger((prev) => prev + 1);
 		}
 	};
 
@@ -202,6 +202,7 @@ export default function HomePage() {
 				onClose={handleCloseModal}
 				selectedGame={selectedGame}
 				onSaveGuess={handleSaveGuess}
+				onGuessSaved={() => setRefreshTrigger((prev) => prev + 1)}
 				userGuesses={userGuesses}
 				currentUserId={currentUser?.id ?? null}
 			/>
