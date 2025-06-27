@@ -1,7 +1,12 @@
 "use client";
 
 import { supabase } from "@/lib/supabase-client";
-import { Auth } from "@supabase/auth-ui-react";
+import dynamic from "next/dynamic";
+
+const Auth = dynamic(
+	() => import("@supabase/auth-ui-react").then((mod) => mod.Auth),
+	{ ssr: false },
+);
 import { ThemeSupa } from "@supabase/auth-ui-shared";
 import { AlertCircle, Award, Clock, Trophy, Users } from "lucide-react";
 import Image from "next/image";
