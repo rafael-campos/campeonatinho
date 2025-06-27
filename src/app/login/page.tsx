@@ -1,16 +1,16 @@
 "use client";
 
 import { supabase } from "@/lib/supabase-client";
+import { ThemeSupa } from "@supabase/auth-ui-shared";
+import { Award, Clock, Trophy, Users } from "lucide-react";
 import dynamic from "next/dynamic";
+import Image from "next/image";
+import { useRouter } from "next/navigation";
 
 const Auth = dynamic(
 	() => import("@supabase/auth-ui-react").then((mod) => mod.Auth),
 	{ ssr: false },
 );
-import { ThemeSupa } from "@supabase/auth-ui-shared";
-import { AlertCircle, Award, Clock, Trophy, Users } from "lucide-react";
-import Image from "next/image";
-import { useRouter } from "next/navigation";
 
 export default function LoginPage() {
 	const router = useRouter();
@@ -22,7 +22,7 @@ export default function LoginPage() {
 				<div className="bg-white shadow-lg rounded-lg overflow-hidden h-fit ">
 					<div className="relative w-full h-[400px] shadow-md">
 						<Image
-							src="/logo-mundial.webp"
+							src="/fifa.png"
 							alt="Rafa.bet"
 							fill
 							className="object-cover"
@@ -121,6 +121,17 @@ export default function LoginPage() {
 							</p>
 						</div>
 
+						{/* Palpite Campeão */}
+						<div>
+							<h3 className="font-semibold text-gray-900 mb-2 flex items-center gap-2">
+								<Trophy className="w-5 h-5 text-yellow-500" />
+								Palpite bônus — Campeão da Copa
+							</h3>
+							<p className="text-gray-600">
+								5 pontos bônus para quem acertar o campeão da Copa!
+							</p>
+						</div>
+
 						{/* Importante */}
 						<div className="bg-yellow-50 p-4 rounded-lg border border-yellow-200">
 							<h3 className="font-semibold text-gray-900 mb-2 flex items-center gap-2">
@@ -129,21 +140,8 @@ export default function LoginPage() {
 							</h3>
 							<p className="text-gray-600">
 								Palpites devem ser enviados até 1h antes do jogo. Após isso, o
-								sistema bloqueia automaticamente.
-							</p>
-						</div>
-
-						
-
-						{/* Responsabilidades */}
-						<div className="bg-gray-50 p-4 rounded-lg border border-gray-200">
-							<h3 className="font-semibold text-gray-900 mb-2 flex items-center gap-2">
-								<AlertCircle className="w-5 h-5 text-gray-600" />
-								Responsabilidades
-							</h3>
-							<p className="text-gray-600">
-								Não palpitou? Menos chance de vencer. A responsabilidade é
-								inteiramente sua.
+								sistema bloqueia automaticamente.<br />
+								<strong>Importante:</strong> Após escolher o campeão, não será possível mudar. Só é permitido escolher o campeão antes do início das oitavas de final.
 							</p>
 						</div>
 					</div>
