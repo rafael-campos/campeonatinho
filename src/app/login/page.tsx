@@ -51,7 +51,7 @@ export default function LoginPage() {
 								},
 							}}
 							providers={["google"]}
-							redirectTo="/auth/callback"
+							redirectTo="https://campeonatinho-vcrm.vercel.app/auth/callback"
 							view="sign_in"
 							showLinks={false}
 							onlyThirdPartyProviders={true}
