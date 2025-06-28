@@ -70,20 +70,12 @@ export function GameCard({
 	}, [shouldLoadGuesses, isLoadingAllGuesses, game.id]);
 
 	useEffect(() => {
-		if (
-			showAllGuesses &&
-			!isLoadingAllGuesses &&
-			!allGuesses.length &&
-			!hasLoadedGuesses
-		) {
+		// Modificado para tentar carregar se showAllGuesses é true,
+		// não estamos carregando e ainda não consideramos que carregamos com sucesso.
+		if (showAllGuesses && !isLoadingAllGuesses && !hasLoadedGuesses) {
 			setShouldLoadGuesses(true);
 		}
-	}, [
-		showAllGuesses,
-		isLoadingAllGuesses,
-		allGuesses.length,
-		hasLoadedGuesses,
-	]);
+	}, [showAllGuesses, isLoadingAllGuesses, hasLoadedGuesses]); // Removido allGuesses.length das dependências diretas desta lógica de disparo
 
 	if (userGuess && game.home_score !== null && game.away_score !== null) {
 		const homeActual = game.home_score;
