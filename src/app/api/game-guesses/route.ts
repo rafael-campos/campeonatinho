@@ -23,13 +23,14 @@ export async function GET(request: Request) {
 		} = await supabase.auth.getUser();
 
 		if (!user) {
-			return NextResponse.json({ error: "Usuário não autenticado" }, { status: 401 });
+			// Se não houver usuário, retorna uma lista vazia, pois não há palpite para mostrar.
+			return NextResponse.json({ data: [] });
 		}
 
-		// 1. Buscar detalhes do jogo, incluindo o kickoff_time
+		// 1. Buscar detalhes do jogo para verificar se já tem placar
 		const { data: game, error: gameError } = await supabase
 			.from("games")
-			.select("kickoff_time")
+			.select("home_score, away_score")
 			.eq("id", gameId)
 			.single();
 
@@ -40,11 +41,8 @@ export async function GET(request: Request) {
 			);
 		}
 
-		// 2. Verificar se o jogo já travou para palpites (1 hora antes do início)
-		const kickoffTime = new Date(game.kickoff_time).getTime();
-		const oneHourBefore = kickoffTime - 60 * 60 * 1000;
-		const now = new Date().getTime();
-		const isLocked = now >= oneHourBefore;
+		// 2. Verificar se o jogo já tem um placar final
+		const hasResult = game.home_score !== null && game.away_score !== null;
 
 		let query = supabase
 			.from("guesses")
@@ -56,8 +54,8 @@ export async function GET(request: Request) {
 			)
 			.eq("game_id", gameId);
 
-		// 3. Se o jogo não estiver travado, mostrar apenas o palpite do usuário logado
-		if (!isLocked) {
+		// 3. Se o jogo não tiver resultado, mostrar apenas o palpite do usuário logado
+		if (!hasResult) {
 			query = query.eq("user_id", user.id);
 		}
 
