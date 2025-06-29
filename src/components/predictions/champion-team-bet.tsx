@@ -124,7 +124,12 @@ export function ChampionTeamBet({ currentUserId }: ChampionTeamBetProps) {
 						🏆 Campeão da Copa
 					</h2>
 					{currentUserId && !userHasBet && isBettingOpen() && (
-						className="w-full bg-green-500 text-white font-bold py-3 rounded-lg shadow-lg hover:bg-green-600 transition-colors duration-300 disabled:bg-gray-400 disabled:cursor-not-allowed"
+						<Button
+							onClick={() => setIsModalOpen(true)}
+							className="bg-green-500 text-white font-bold py-2 px-4 rounded-lg shadow-lg hover:bg-green-600 transition-colors duration-300"
+						>
+							Palpitar
+						</Button>
 					)}
 					{!isBettingOpen() && (
 						<span className="text-sm text-gray-500">
