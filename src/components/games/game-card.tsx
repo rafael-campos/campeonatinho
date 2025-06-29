@@ -290,8 +290,7 @@ export function GameCard({
 
 			<div className="mt-2 text-center">
 				<div
-					className={`overflow-hidden transition-all duration-300 ease-in-out ${showAllGuesses ? "max-h-96 opacity-100" : "max-h-0 opacity-0"}`}
-				>
+					className={`overflow-hidden transition-all duration-300 ease-in-out ${showAllGuesses ? "max-h-96 opacity-100 overflow-y-auto" : "max-h-0 opacity-0"}`}
 					{isLoadingAllGuesses && (
 						<div className="text-gray-500 text-sm">Carregando palpites...</div>
 					)}
