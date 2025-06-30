@@ -355,9 +355,9 @@ export function GameCard({
 											cardBorderClass = "border border-yellow-500"; // Borda amarela forte
 										} // Errou tudo
 										else {
-											guessCardBgColor = "bg-green-100/40"; // Vermelho com 40% de opacidade
+											guessCardBgColor = "bg-red-100/40"; // Vermelho com 40% de opacidade
 											cardShadowClass = ""; // Sem sombra
-											cardBorderClass = "border border-green-500"; // Borda vermelha forte
+											cardBorderClass = "border border-red-500"; // Borda vermelha forte
 										}
 									}
 
