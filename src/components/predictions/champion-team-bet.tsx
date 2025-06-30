@@ -86,6 +86,13 @@ export function ChampionTeamBet({ currentUserId }: ChampionTeamBetProps) {
     loadBets();
   }, [loadBets]);
 
+  // Log de depuração
+  useEffect(() => {
+    console.log("[ChampionTeamBet] currentUserId:", currentUserId);
+    console.log("[ChampionTeamBet] userHasBet:", userHasBet);
+    console.log("[ChampionTeamBet] isBettingOpen:", isBettingOpen());
+  }, [currentUserId, userHasBet]);
+
   const handleSelectTeam = async (teamId: string) => {
     if (!currentUserId) return;
 
