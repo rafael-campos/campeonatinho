@@ -169,7 +169,7 @@ export function ChampionTeamBet({ currentUserId }: ChampionTeamBetProps) {
                     </p>
                   </div>
                 </div>
-                <div className="pl-14 space-y-2">
+                <div className="pl-14 space-y-2 max-h-[300px] overflow-y-auto">
                   {group.users.map((user) => (
                     <div
                       key={user.name}

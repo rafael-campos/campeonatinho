@@ -1,17 +1,17 @@
 import { Button } from "@/components/ui/button";
 import {
-	Command,
-	CommandEmpty,
-	CommandGroup,
-	CommandInput,
-	CommandItem,
-	CommandList,
+    Command,
+    CommandEmpty,
+    CommandGroup,
+    CommandInput,
+    CommandItem,
+    CommandList,
 } from "@/components/ui/command";
 import { Modal } from "@/components/ui/modal";
 import {
-	Popover,
-	PopoverContent,
-	PopoverTrigger,
+    Popover,
+    PopoverContent,
+    PopoverTrigger,
 } from "@/components/ui/popover";
 import { cn } from "@/lib/utils";
 import { Database } from "@/types/supabase";
@@ -129,8 +129,7 @@ export function ChampionTeamModal({
 							<Command>
 								<CommandInput placeholder="Buscar time..." />
 								<CommandList
-									className="max-h-[200px] !overflow-y-auto"
-									tabIndex={-1}
+									className="max-h-[300px] overflow-y-auto"
 									onWheel={(e) => e.stopPropagation()}
 								>
 									<CommandEmpty>Nenhum time encontrado.</CommandEmpty>
