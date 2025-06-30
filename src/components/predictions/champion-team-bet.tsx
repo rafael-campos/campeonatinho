@@ -133,18 +133,13 @@ export function ChampionTeamBet({ currentUserId }: ChampionTeamBetProps) {
           <h2 className="text-lg font-semibold text-gray-900">
             🏆 Campeão da Copa
           </h2>
-          {currentUserId && !userHasBet && isBettingOpen() && (
+          {currentUserId && !userHasBet && (
             <Button
               onClick={() => setIsModalOpen(true)}
               className="bg-green-500 text-white font-bold py-2 px-4 rounded-lg shadow-lg hover:bg-green-600 transition-colors duration-300"
             >
               Palpitar
             </Button>
-          )}
-          {!isBettingOpen() && (
-            <span className="text-sm text-gray-500">
-              Período de palpites encerrado
-            </span>
           )}
         </div>
 
