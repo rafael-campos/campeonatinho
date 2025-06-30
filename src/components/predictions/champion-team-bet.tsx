@@ -35,7 +35,7 @@ export function ChampionTeamBet({ currentUserId }: ChampionTeamBetProps) {
 
   // A aposta no campeão pode ser feita até o início do segundo dia de jogos.
   const isBettingOpen = () => {
-    const deadline = new Date("2025-06-28T12:59:59-03:00"); // Data limite para apostar
+    const deadline = new Date("2024-07-30T16:00:00-03:00"); // Data limite para apostar
     const now = new Date();
     return now.getTime() <= deadline.getTime();
   };
