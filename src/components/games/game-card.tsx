@@ -30,7 +30,7 @@ export function GameCard({
 	const gameTime = new Date(game.game_time);
 	const currentTime = new Date();
 	const timeDifference = gameTime.getTime() - currentTime.getTime(); // Diferença em milissegundos
-	const isPredictionClosed = timeDifference <= 60 * 60 * 1000; // 60 minutos em milissegundos
+	const isPredictionClosed = timeDifference <= 30 * 60 * 1000; // 30 minutos em milissegundos
 
 	const hasActualScore = game.home_score !== null && game.away_score !== null;
 	const isAdmin = currentUserId === "631aa0ad-e28f-46cc-b655-bb141c04488a";
