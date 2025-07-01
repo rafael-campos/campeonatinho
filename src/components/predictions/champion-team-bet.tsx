@@ -35,9 +35,8 @@ export function ChampionTeamBet({ currentUserId }: ChampionTeamBetProps) {
 
   // A aposta no campeão pode ser feita até o início do segundo dia de jogos.
   const isBettingOpen = () => {
-    const deadline = new Date("2024-07-30T16:00:00-03:00"); // Data limite para apostar
-    const now = new Date();
-    return now.getTime() <= deadline.getTime();
+    // Data limite já passou, então sempre retorna false
+    return false;
   };
 
   const loadBets = useCallback(async () => {
@@ -133,13 +132,18 @@ export function ChampionTeamBet({ currentUserId }: ChampionTeamBetProps) {
           <h2 className="text-lg font-semibold text-gray-900">
             🏆 Campeão da Copa
           </h2>
-          {currentUserId && !userHasBet && (
+          {currentUserId && !userHasBet && isBettingOpen() && (
             <Button
               onClick={() => setIsModalOpen(true)}
               className="bg-green-500 text-white font-bold py-2 px-4 rounded-lg shadow-lg hover:bg-green-600 transition-colors duration-300"
             >
               Palpitar
             </Button>
+          )}
+          {!isBettingOpen() && (
+            <span className="text-sm text-gray-500">
+              Período de palpites encerrado
+            </span>
           )}
         </div>
 
