@@ -57,30 +57,33 @@ export function GameList({
 		setFilteredGames(gamesForDay);
 	}, [currentDate, games]);
 
-	const hasPreviousDay = games.some((game) => {
-		const gameDate = new Date(game.game_time);
-		const startOfCurrentDate = new Date(currentDate);
-		startOfCurrentDate.setHours(0, 0, 0, 0);
-		return gameDate < startOfCurrentDate;
-	});
+	// Array de datas únicas dos jogos, ordenadas
+	const uniqueGameDates = Array.from(
+		new Set(games.map((game) => {
+			const d = new Date(game.game_time);
+			d.setHours(0, 0, 0, 0);
+			return d.getTime();
+		}))
+	)
+		.sort((a, b) => a - b)
+		.map((t) => new Date(t));
 
-	const hasNextDay = games.some((game) => {
-		const gameDate = new Date(game.game_time);
-		const endOfCurrentDate = new Date(currentDate);
-		endOfCurrentDate.setHours(23, 59, 59, 999);
-		return gameDate > endOfCurrentDate;
-	});
+	// Função para encontrar o índice da data atual
+	const currentIndex = uniqueGameDates.findIndex((d) => d.getTime() === currentDate.setHours(0, 0, 0, 0));
+
+	const hasPreviousDay = currentIndex > 0;
+	const hasNextDay = currentIndex < uniqueGameDates.length - 1;
 
 	const handlePreviousDay = () => {
-		const newDate = new Date(currentDate);
-		newDate.setDate(newDate.getDate() - 1);
-		handleDateChange(newDate);
+		if (hasPreviousDay) {
+			handleDateChange(uniqueGameDates[currentIndex - 1]);
+		}
 	};
 
 	const handleNextDay = () => {
-		const newDate = new Date(currentDate);
-		newDate.setDate(newDate.getDate() + 1);
-		handleDateChange(newDate);
+		if (hasNextDay) {
+			handleDateChange(uniqueGameDates[currentIndex + 1]);
+		}
 	};
 
 	return (
@@ -94,6 +97,9 @@ export function GameList({
 			/>
 
 			<div className="space-y-4">
+				{(currentDate.getDate() === 4 || currentDate.getDate() === 5) && currentDate.getMonth() === 6 && (
+					<div className="text-center text-lg font-bold text-gray-800 mb-2">Quartas de Final</div>
+				)}
 				{filteredGames.length > 0 ? (
 					filteredGames.map((game) => (
 						<GameCard
