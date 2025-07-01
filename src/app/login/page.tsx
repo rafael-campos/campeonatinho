@@ -107,6 +107,12 @@ export default function LoginPage() {
 									Errou tudo: 0 pontos
 								</li>
 							</ul>
+							<div className="mt-4 text-sm text-gray-700 bg-gray-50 border border-gray-200 rounded-lg p-3">
+								<span className="font-bold text-gray-900">Cores dos palpites:</span><br />
+								<span className="inline-block mr-2"><span className="inline-block w-3 h-3 rounded-full align-middle bg-green-200 border border-green-500 mr-1"></span>Verde: Cravou o placar</span><br />
+								<span className="inline-block mr-2"><span className="inline-block w-3 h-3 rounded-full align-middle bg-yellow-100 border border-yellow-500 mr-1"></span>Amarelo: Acertou o vencedor</span><br />
+								<span className="inline-block"><span className="inline-block w-3 h-3 rounded-full align-middle bg-red-100 border border-red-500 mr-1"></span>Vermelho: Errou tudo</span>
+							</div>
 						</div>
 
 						{/* Time Brasileiro */}
@@ -138,10 +144,13 @@ export default function LoginPage() {
 								<Clock className="w-5 h-5 text-yellow-600" />
 								Importante
 							</h3>
-							<p className="text-gray-600">
-								Palpites devem ser enviados até 1h antes do jogo. Após isso, o
-								sistema bloqueia automaticamente.<br />
+							<p className="text-gray-600 mb-2">
+								Palpites devem ser enviados até <strong>1 minuto</strong> antes do jogo. Após isso, o sistema bloqueia automaticamente.<br />
 								<strong>Importante:</strong> Após escolher o campeão, não será possível mudar. Só é permitido escolher o campeão antes do início das oitavas de final.
+							</p>
+							<p className="text-gray-600 mb-2">
+								<strong>O placar considerado inclui a prorrogação</strong> (se houver).<br />
+								<strong>Pontuação de empate:</strong> Só ganha ponto de empate se o jogo terminar empatado após a prorrogação e for decidido nos pênaltis.
 							</p>
 						</div>
 					</div>
