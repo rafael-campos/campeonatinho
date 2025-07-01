@@ -100,6 +100,9 @@ export function GameList({
 				{(currentDate.getDate() === 4 || currentDate.getDate() === 5) && currentDate.getMonth() === 6 && (
 					<div className="text-center text-lg font-bold text-gray-800 mb-2">Quartas de Final</div>
 				)}
+				{(currentDate.getDate() === 28 || currentDate.getDate() === 29 || currentDate.getDate() === 30) && currentDate.getMonth() === 5 && (
+					<div className="text-center text-lg font-bold text-gray-800 mb-2">Oitavas de Final</div>
+				)}
 				{filteredGames.length > 0 ? (
 					filteredGames.map((game) => (
 						<GameCard
