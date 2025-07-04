@@ -22,18 +22,38 @@ export function GameList({
 
 	const [filteredGames, setFilteredGames] = useState(games);
 
-	const [currentDate, setCurrentDate] = useState<Date>(() => {
+	// Array de datas únicas dos jogos, ordenadas
+	const uniqueGameDates = Array.from(
+		new Set(games.map((game) => {
+			const d = new Date(game.game_time);
+			d.setHours(0, 0, 0, 0);
+			return d.getTime();
+		}))
+	)
+		.sort((a, b) => a - b)
+		.map((t) => new Date(t));
+
+	// Função para encontrar o índice da data atual
+	function getInitialDate() {
 		const dateParam = searchParams.get("date");
 		if (dateParam) {
-			// Tenta parsear a data do query param
 			const date = new Date(dateParam);
-			// Valida se a data é válida
 			if (!Number.isNaN(date.getTime())) {
 				return date;
 			}
 		}
-		return new Date(); // Retorna a data atual se não houver param ou for inválido
-	});
+		// Se não houver param, pega o próximo dia com jogo a partir de hoje
+		const today = new Date();
+		today.setHours(0, 0, 0, 0);
+		const nextGameDay = uniqueGameDates.find((d) => d.getTime() >= today.getTime());
+		if (nextGameDay) return nextGameDay;
+		// Se não houver jogos futuros, pega o último dia com jogo
+		if (uniqueGameDates.length > 0) return uniqueGameDates[uniqueGameDates.length - 1];
+		// Fallback: hoje
+		return today;
+	}
+
+	const [currentDate, setCurrentDate] = useState<Date>(getInitialDate);
 
 	const handleDateChange = (newDate: Date) => {
 		setCurrentDate(newDate);
@@ -56,17 +76,6 @@ export function GameList({
 
 		setFilteredGames(gamesForDay);
 	}, [currentDate, games]);
-
-	// Array de datas únicas dos jogos, ordenadas
-	const uniqueGameDates = Array.from(
-		new Set(games.map((game) => {
-			const d = new Date(game.game_time);
-			d.setHours(0, 0, 0, 0);
-			return d.getTime();
-		}))
-	)
-		.sort((a, b) => a - b)
-		.map((t) => new Date(t));
 
 	// Função para encontrar o índice da data atual
 	const currentIndex = uniqueGameDates.findIndex((d) => d.getTime() === currentDate.setHours(0, 0, 0, 0));
