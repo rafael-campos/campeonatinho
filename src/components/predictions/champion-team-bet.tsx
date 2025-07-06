@@ -27,6 +27,13 @@ interface GroupedBet {
   }>;
 }
 
+// Lista de times eliminados
+const ELIMINATED_TEAMS = [
+  "Manchester City",
+  "Bayern Munich",
+  "Flamengo"
+];
+
 export function ChampionTeamBet({ currentUserId }: ChampionTeamBetProps) {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [groupedBets, setGroupedBets] = useState<GroupedBet[]>([]);
@@ -177,7 +184,7 @@ export function ChampionTeamBet({ currentUserId }: ChampionTeamBetProps) {
                   {group.users.map((user) => (
                     <div
                       key={user.name}
-                      className="flex items-center gap-2 text-sm text-gray-500"
+                      className={`flex items-center gap-2 text-sm text-gray-500 rounded px-2 py-1 ${ELIMINATED_TEAMS.includes(group.team.name) ? "bg-red-100/50" : ""}`}
                     >
                       {user.avatar_url && (
                         <Image
