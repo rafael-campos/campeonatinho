@@ -132,7 +132,7 @@ export function BrazilianTeamBet({ currentUserId }: BrazilianTeamBetProps) {
 
 				{/* Mensagem de parabéns para quem acertou o time brasileiro que foi mais longe */}
 				{groupedBets.some(group => group.users.some(user => user.name === "Brenno Alves")) && (
-					<div className="bg-green-100/50 border border-green-300 text-green-900 rounded-lg px-4 py-3 mb-4 font-semibold text-center">
+					<div className="bg-green-100/35 border border-green-300 text-green-900 rounded-lg px-4 py-3 mb-4 font-semibold text-center">
 						🎉 Parabéns <span className="font-bold">Brenno Alves</span>! Você foi o único que acertou o time brasileiro que foi mais longe e ganhou <span className="font-bold">3 pontos extras</span>!
 					</div>
 				)}
@@ -166,7 +166,7 @@ export function BrazilianTeamBet({ currentUserId }: BrazilianTeamBetProps) {
 									{group.users.map((user) => (
 										<div
 											key={user.name}
-											className={`flex items-center gap-2 text-sm text-gray-500 rounded px-2 py-1 ${user.name === "Brenno Alves" ? "bg-green-100/50" : "bg-red-100/50"}`}
+											className={`flex items-center gap-2 text-sm text-gray-500 rounded px-2 py-1 ${user.name === "Brenno Alves" ? "bg-green-100/35" : "bg-red-100/35"}`}
 										>
 											{user.avatar_url && (
 												<Image
