@@ -184,7 +184,7 @@ export function ChampionTeamBet({ currentUserId }: ChampionTeamBetProps) {
                   {group.users.map((user) => (
                     <div
                       key={user.name}
-                      className={`flex items-center gap-2 text-sm text-gray-500 rounded px-2 py-1 ${ELIMINATED_TEAMS.includes(group.team.name) ? "bg-red-100/50" : ""}`}
+                      className={`flex items-center gap-2 text-sm text-gray-500 rounded px-2 py-1 ${ELIMINATED_TEAMS.includes(group.team.name) ? "bg-red-100/35" : ""}`}
                     >
                       {user.avatar_url && (
                         <Image
