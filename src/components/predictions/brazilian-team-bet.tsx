@@ -159,7 +159,7 @@ export function BrazilianTeamBet({ currentUserId }: BrazilianTeamBetProps) {
 									{group.users.map((user) => (
 										<div
 											key={user.name}
-											className={`flex items-center gap-2 text-sm text-gray-500 rounded px-2 py-1 ${group.team.id === FURTHEST_BRAZILIAN_TEAM_ID ? "bg-green-100" : "bg-red-100"}`}
+											className={`flex items-center gap-2 text-sm text-gray-500 rounded px-2 py-1 ${group.team.id === FURTHEST_BRAZILIAN_TEAM_ID && group.users.length === 1 ? "bg-green-100" : "bg-red-100"}`}
 										>
 											{user.avatar_url && (
 												<Image
