@@ -31,6 +31,9 @@ export function BrazilianTeamBet({ currentUserId }: BrazilianTeamBetProps) {
 	const [loading, setLoading] = useState(true);
 	const [userHasBet, setUserHasBet] = useState(false);
 
+	// Defina o ID do time que foi mais longe (Fluminense)
+	const FURTHEST_BRAZILIAN_TEAM_ID = "coloque_o_id_do_fluminense_aqui";
+
 	const loadBets = useCallback(async () => {
 		try {
 			const response = await fetch("/api/brazil-bet");
@@ -156,7 +159,7 @@ export function BrazilianTeamBet({ currentUserId }: BrazilianTeamBetProps) {
 									{group.users.map((user) => (
 										<div
 											key={user.name}
-											className="flex items-center gap-2 text-sm text-gray-500"
+											className={`flex items-center gap-2 text-sm text-gray-500 rounded px-2 py-1 ${group.team.id === FURTHEST_BRAZILIAN_TEAM_ID ? "bg-green-100" : "bg-red-100"}`}
 										>
 											{user.avatar_url && (
 												<Image
