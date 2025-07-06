@@ -10,7 +10,7 @@ export async function GET() {
     // TODO: Este ID precisa ser atualizado manualmente ou via uma interface de administração
     // assim que o torneio progredir e o time brasileiro que for mais longe for conhecido.
     // Para testes, você pode defini-lo para um ID de um time brasileiro da sua tabela 'teams'.
-    const FURTHEST_BRAZILIAN_TEAM_ID = ""; // Ex: "e82bb843-1d9f-4c0f-a949-e7b4f5d7f100" para o Palmeiras
+    const FURTHEST_BRAZILIAN_TEAM_ID = "91b9fd8c-43ce-4ead-ba4c-04a4ccaf301d"; // Fluminense
     // --- END: Logic for Furthest Brazilian Team Bonus ---
     
     // Buscar todos os perfis
