@@ -42,7 +42,12 @@ export function GameList({
 				return date;
 			}
 		}
-		// Se não houver param, pega o próximo dia com jogo a partir de hoje
+		// Procurar o próximo dia de semifinal (08 ou 09/07/2025)
+		const semifinalDays = uniqueGameDates.filter(d =>
+			(d.getDate() === 8 || d.getDate() === 9) && d.getMonth() === 6
+		);
+		if (semifinalDays.length > 0) return semifinalDays[0];
+		// Se não houver, pega o próximo dia com jogo a partir de hoje
 		const today = new Date();
 		today.setHours(0, 0, 0, 0);
 		const nextGameDay = uniqueGameDates.find((d) => d.getTime() >= today.getTime());
