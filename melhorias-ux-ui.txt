@@ -1,0 +1,147 @@
+# Documento de Melhorias de UX/UI para o "Rafa.bet"
+
+Após uma análise detalhada das páginas e componentes do projeto, elaborei este documento com sugestões de melhorias de UI (User Interface) e UX (User Experience). O objetivo é tornar a aplicação mais coesa, moderna, intuitiva e visualmente agradável.
+
+## 1. Análise Geral e Conceito Visual
+
+A aplicação tem uma base funcional sólida, mas a interface parece ser construída com componentes padrão, sem uma identidade visual forte e coesa. A paleta de cores é muito baseada em tons de cinza, o que torna a aplicação um pouco genérica.
+
+**Conceito Proposto:** "Arena Digital"
+
+A ideia é trazer a emoção e a energia de um estádio de futebol para a interface, utilizando uma paleta de cores mais vibrante, tipografia forte e elementos gráficos que remetam ao esporte.
+
+- **Paleta de Cores:**
+  - **Primária (Ação):** Um verde vibrante (`#00D27F`) para botões de ação, destaques e elementos interativos.
+  - **Fundo Principal:** Um tom de cinza bem escuro, quase preto (`#121212`), para criar um "modo noturno" que é moderno e destaca os elementos coloridos.
+  - **Fundo Secundário (Cards):** Um cinza um pouco mais claro (`#1E1E1E`) para os cards e seções, criando uma hierarquia visual.
+  - **Cores de Destaque:**
+    - **Dourado/Amarelo (`#FFD700`):** Para troféus, posições no ranking e vitórias.
+    - **Azul Vibrante (`#007BFF`):** Para links e informações secundárias.
+  - **Cores de Feedback:** Manter a semântica de verde (acerto), amarelo (acerto parcial) e vermelho (erro), mas com tons mais integrados ao novo tema.
+
+- **Tipografia:**
+  - **Títulos:** Uma fonte mais impactante e condensada, como a **"Anton"** ou **"Oswald"**, para dar um ar de placar esportivo.
+  - **Corpo de Texto:** Manter uma fonte legível como a **"Inter"** ou **"Roboto"**.
+
+- **Iconografia:** Utilizar um conjunto de ícones mais estilizado e coeso. O `lucide-react` é ótimo, mas podemos customizar tamanhos e pesos para se adequarem melhor ao design.
+
+---
+
+## 2. Melhorias por Página e Componente
+
+### 2.1. Página de Login (`LoginPage`)
+
+**Problemas Atuais:**
+- A página é funcional, mas visualmente dividida e um pouco desconexa.
+- A imagem da FIFA domina a atenção, mas não está bem integrada ao formulário de login.
+- A coluna de regras é muito textual e pode ser cansativa.
+
+**Sugestões de Melhoria:**
+1.  **Layout Unificado:** Em vez de duas colunas, centralizar o conteúdo em um único container com um fundo temático (uma imagem de estádio desfocada ou uma textura de gramado sutil).
+2.  **Logo e Título:** Criar uma logo mais estilizada para "Rafa.bet" e dar mais destaque a ela.
+3.  **Botão de Login:** O botão de login do Google pode ser maior e mais proeminente, seguindo a nova identidade visual.
+4.  **Regras Interativas:** Transformar a seção de regras em um carrossel ou em seções "acordeão" (sanfona), para que o usuário possa expandir e ler apenas o que lhe interessa. Usar ícones e menos texto para explicar as regras de pontuação.
+
+### 2.2. Página Principal (`HomePage`)
+
+**Problemas Atuais:**
+- A estrutura é boa, mas a apresentação é muito básica.
+- Falta hierarquia visual entre a lista de jogos, a tabela de classificação e os palpites bônus.
+- O header é simples e o footer quase não tem informação.
+
+**Sugestões de Melhoria:**
+1.  **Header Imersivo:**
+    - Adicionar a logo do campeonato (Mundial de Clubes) ao lado do "Rafa.bet".
+    - O nome do usuário e o avatar poderiam ter um destaque maior, talvez com a pontuação total do usuário exibida ali.
+    - O botão de "Sair" pode ser apenas um ícone, para uma interface mais limpa.
+2.  **Layout da `main`:**
+    - Dar mais "respiro" (espaçamento) entre os componentes.
+    - Utilizar o fundo escuro (`#121212`) e fazer os componentes se destacarem.
+3.  **Footer:** Adicionar links para as regras (talvez abrindo um modal) e um link para o repositório do projeto ou contato.
+
+### 2.3. Componentes de Jogos (`GameCard`, `GameList`, `GameHeader`)
+
+**Problemas Atuais:**
+- O `GameCard` é o coração da aplicação, mas seu design é o mais genérico.
+- A forma de exibir o palpite do usuário (números grandes e semitransparentes) é criativa, mas pode poluir a interface e dificultar a leitura do card principal.
+- O botão "Palpitar" está deslocado e não parece integrado ao card.
+
+**Sugestões de Melhoria:**
+1.  **`GameHeader`:**
+    - Torná-lo mais parecido com um seletor de rodadas de campeonato.
+    - Os botões de "anterior" e "próximo" podem ser maiores e mais estilizados.
+    - A data pode ter um peso maior e a fonte de título sugerida.
+2.  **`GameCard` Redesenhado:**
+    - **Estrutura:** Manter a estrutura de "Time A vs Time B", mas com um design mais arrojado. Os logos dos times podem ser maiores.
+    - **Feedback do Palpite:** Em vez dos números grandes, mostrar o palpite do usuário de forma mais integrada. Por exemplo, abaixo do placar oficial, mostrar "Seu palpite: 2x1" com a cor de feedback (verde, amarelo, vermelho) aplicada a um ícone ou à borda do card.
+    - **Botão de Ação:** Integrar o botão "Palpitar" / "Editar Palpite" diretamente no card, de forma centralizada e clara, usando a cor primária verde.
+    - **Mostrar Palpites:** A seção "Mostrar todos os palpites" é ótima para o engajamento. O design da lista de palpites pode ser melhorado, com avatares maiores e uma diferenciação mais clara para o palpite do próprio usuário.
+
+### 2.4. Tabela de Classificação (`LeaderboardTable`)
+
+**Problemas Atuais:**
+- A tabela é funcional, mas muito padrão.
+- As abreviações "AP", "AV", "P" não são imediatamente claras para um novo usuário.
+
+**Sugestões de Melhoria:**
+1.  **Design de Pódio:** Destacar os 3 primeiros colocados com medalhas (🥇, 🥈, 🥉) ou um fundo diferente (dourado, prata, bronze).
+2.  **Clareza nas Colunas:** Usar ícones junto com o texto no cabeçalho da tabela para explicar o que cada coluna significa (ex: um alvo para "Placar Exato", um troféu para "Vencedor").
+3.  **Linha do Usuário:** Destacar a linha do usuário logado na tabela com uma cor de fundo diferente para que ele se encontre facilmente.
+
+### 2.5. Palpites Bônus (`BrazilianTeamBet`, `ChampionTeamBet`)
+
+**Problemas Atuais:**
+- Os cards são informativos, mas muito textuais.
+- A lista de quem votou em quem pode ficar muito longa e poluir a interface.
+
+**Sugestões de Melhoria:**
+1.  **Visual Mais Gráfico:** Em vez de listas, usar uma abordagem mais visual. Por exemplo, mostrar os logos dos times e, abaixo de cada um, os avatares dos usuários que votaram nele.
+2.  **Agrupamento de Avatares:** Se muitos usuários votarem em um time, agrupar os avatares com um contador (ex: "+5") para não sobrecarregar a UI.
+3.  **Feedback Visual:** Quando um time for eliminado, aplicar um filtro de "escala de cinza" no logo e nos avatares para indicar visualmente que aquela aposta não é mais válida.
+
+### 2.6. Modais (`PredictionModal`, `ChampionTeamModal`, etc.)
+
+**Problemas Atuais:**
+- Os modais são funcionais, mas seguem o estilo padrão.
+- A seleção de time no `ChampionTeamModal` (um combobox) é funcional, mas pouco visual.
+
+**Sugestões de Melhoria:**
+1.  **Estilo Coeso:** Aplicar a nova identidade visual aos modais (fundo escuro, botões estilizados).
+2.  **Seleção de Time Visual:** No `ChampionTeamModal`, em vez de um combobox, mostrar uma grade com os logos dos times, similar ao `BrazilianTeamModal`. É uma experiência muito mais rica e visual.
+3.  **Confirmação Clara:** O passo de confirmação é uma boa prática de UX. Podemos torná-lo mais impactante, talvez mostrando o logo do time escolhido em destaque.
+
+---
+
+## 3. Próximos Passos e Implementação
+
+Para implementar essas mudanças, sugiro o seguinte plano de ação:
+
+1.  **Configurar Tema e Estilos Globais:**
+    - Atualizar o `tailwind.config.ts` (ou similar) com a nova paleta de cores e fontes.
+    - Ajustar o `globals.css` com os estilos base (cor de fundo, cor do texto, etc).
+2.  **Refatorar Componentes de UI:**
+    - Começar pelos componentes base como `Button`, `Modal`, `Dialog` para que reflitam a nova identidade.
+3.  **Implementar por Página:**
+    - Começar pela `LoginPage`, aplicando o novo layout e conceito.
+    - Seguir para a `HomePage`, redesenhando o `GameCard` e a `LeaderboardTable`.
+    - Por fim, ajustar os modais e os cards de palpites bônus.
+
+Este documento serve como um guia. As ideias podem ser discutidas e adaptadas. O foco principal é criar uma experiência de usuário mais memorável e divertida, que combine com a paixão pelo futebol.
+
+---
+
+## 4. Progresso (para continuar depois)
+
+**Última Ação:**
+- Corrigido o erro de build no `login/page.tsx` (aspa dupla extra).
+- O ambiente de desenvolvimento foi configurado com o arquivo `.env.local` para resolver o erro de conexão com o Supabase.
+- **CONCLUÍDO:** Refatoração da `HomePage` (`src/app/page.tsx`) para aplicar o novo design (Header, Layout, Footer).
+- **CONCLUÍDO:** Refatoração do `GameCard` (`src/components/games/game-card.tsx`) com o novo design.
+- **CONCLUÍDO:** Refatoração da `LeaderboardTable` (`src/components/leaderboard/leaderboard-table.tsx`) com o novo design.
+- **CONCLUÍDO:** Refatoração dos componentes `BrazilianTeamBet` e `ChampionTeamBet` com layout gráfico.
+- **CONCLUÍDO:** Refatoração dos modais `PredictionModal`, `BrazilianTeamModal` e `ChampionTeamModal` com o novo design.
+- **CONCLUÍDO:** Atualização do `tailwind.config.ts` e `globals.css` com o novo tema e fontes.
+- **CONCLUÍDO:** Atualização do `layout.tsx` para usar as fontes "Anton" e "Inter".
+
+**Próximo Passo:**
+- Todos os itens de melhoria de UX/UI foram concluídos. O próximo passo seria iniciar os testes e o deploy da aplicação.

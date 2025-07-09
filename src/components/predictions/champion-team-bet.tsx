@@ -31,7 +31,8 @@ interface GroupedBet {
 const ELIMINATED_TEAMS = [
   "Manchester City",
   "Bayern Munich",
-  "Flamengo"
+  "Flamengo",
+  "Fluminense"
 ];
 
 export function ChampionTeamBet({ currentUserId }: ChampionTeamBetProps) {

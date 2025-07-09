@@ -51,7 +51,9 @@ export default function LoginPage() {
 								},
 							}}
 							providers={["google"]}
-							redirectTo="https://campeonatinho-vcrm.vercel.app/auth/callback"
+							redirectTo={process.env.NODE_ENV === "development"
+								? "http://localhost:3000/auth/callback"
+								: "https://campeonatinho-vcrm.vercel.app/auth/callback"}
 							view="sign_in"
 							showLinks={false}
 							onlyThirdPartyProviders={true}
