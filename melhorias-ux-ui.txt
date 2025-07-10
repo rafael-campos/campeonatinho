@@ -1,29 +1,29 @@
 # Documento de Melhorias de UX/UI para o "Rafa.bet"
 
-Após uma análise detalhada das páginas e componentes do projeto, elaborei este documento com sugestões de melhorias de UI (User Interface) e UX (User Experience). O objetivo é tornar a aplicação mais coesa, moderna, intuitiva e visualmente agradável.
+Este documento detalha as sugestões de melhorias de UI (User Interface) e UX (User Experience) para o aplicativo "Rafa.bet", com o objetivo de torná-lo mais coeso, moderno, intuitivo e visualmente atraente.
 
 ## 1. Análise Geral e Conceito Visual
 
-A aplicação tem uma base funcional sólida, mas a interface parece ser construída com componentes padrão, sem uma identidade visual forte e coesa. A paleta de cores é muito baseada em tons de cinza, o que torna a aplicação um pouco genérica.
+A aplicação busca uma identidade visual forte e coesa, transformando a experiência do usuário em algo mais imersivo e emocionante.
 
 **Conceito Proposto:** "Arena Digital"
 
-A ideia é trazer a emoção e a energia de um estádio de futebol para a interface, utilizando uma paleta de cores mais vibrante, tipografia forte e elementos gráficos que remetam ao esporte.
+A ideia é evocar a energia de um estádio de futebol, utilizando uma paleta de cores vibrante, tipografia impactante e elementos gráficos que remetam ao esporte.
 
 - **Paleta de Cores:**
   - **Primária (Ação):** Um verde vibrante (`#00D27F`) para botões de ação, destaques e elementos interativos.
-  - **Fundo Principal:** Um tom de cinza bem escuro, quase preto (`#121212`), para criar um "modo noturno" que é moderno e destaca os elementos coloridos.
-  - **Fundo Secundário (Cards):** Um cinza um pouco mais claro (`#1E1E1E`) para os cards e seções, criando uma hierarquia visual.
+  - **Fundo Principal:** Um tom de cinza bem escuro, quase preto (`#121212`), para criar um "modo noturno" moderno.
+  - **Fundo Secundário (Cards):** Um cinza um pouco mais claro (`#1E1E1E`) para cards e seções, criando hierarquia visual.
   - **Cores de Destaque:**
     - **Dourado/Amarelo (`#FFD700`):** Para troféus, posições no ranking e vitórias.
     - **Azul Vibrante (`#007BFF`):** Para links e informações secundárias.
-  - **Cores de Feedback:** Manter a semântica de verde (acerto), amarelo (acerto parcial) e vermelho (erro), mas com tons mais integrados ao novo tema.
+  - **Cores de Feedback:** Manter a semântica de verde (acerto), amarelo (acerto parcial) e vermelho (erro), com tons integrados ao tema.
 
 - **Tipografia:**
-  - **Títulos:** Uma fonte mais impactante e condensada, como a **"Anton"** ou **"Oswald"**, para dar um ar de placar esportivo.
-  - **Corpo de Texto:** Manter uma fonte legível como a **"Inter"** ou **"Roboto"**.
+  - **Títulos:** Uma fonte impactante e condensada, como **"Anton"** ou **"Oswald"**, para um ar de placar esportivo.
+  - **Corpo de Texto:** Uma fonte legível como **"Inter"** ou **"Roboto"**.
 
-- **Iconografia:** Utilizar um conjunto de ícones mais estilizado e coeso. O `lucide-react` é ótimo, mas podemos customizar tamanhos e pesos para se adequarem melhor ao design.
+- **Iconografia:** Utilizar um conjunto de ícones estilizado e coeso, customizando tamanhos e pesos para se adequarem ao design.
 
 ---
 
@@ -114,34 +114,4 @@ A ideia é trazer a emoção e a energia de um estádio de futebol para a interf
 
 ## 3. Próximos Passos e Implementação
 
-Para implementar essas mudanças, sugiro o seguinte plano de ação:
-
-1.  **Configurar Tema e Estilos Globais:**
-    - Atualizar o `tailwind.config.ts` (ou similar) com a nova paleta de cores e fontes.
-    - Ajustar o `globals.css` com os estilos base (cor de fundo, cor do texto, etc).
-2.  **Refatorar Componentes de UI:**
-    - Começar pelos componentes base como `Button`, `Modal`, `Dialog` para que reflitam a nova identidade.
-3.  **Implementar por Página:**
-    - Começar pela `LoginPage`, aplicando o novo layout e conceito.
-    - Seguir para a `HomePage`, redesenhando o `GameCard` e a `LeaderboardTable`.
-    - Por fim, ajustar os modais e os cards de palpites bônus.
-
-Este documento serve como um guia. As ideias podem ser discutidas e adaptadas. O foco principal é criar uma experiência de usuário mais memorável e divertida, que combine com a paixão pelo futebol.
-
----
-
-## 4. Progresso (para continuar depois)
-
-**Última Ação:**
-- Corrigido o erro de build no `login/page.tsx` (aspa dupla extra).
-- O ambiente de desenvolvimento foi configurado com o arquivo `.env.local` para resolver o erro de conexão com o Supabase.
-- **CONCLUÍDO:** Refatoração da `HomePage` (`src/app/page.tsx`) para aplicar o novo design (Header, Layout, Footer).
-- **CONCLUÍDO:** Refatoração do `GameCard` (`src/components/games/game-card.tsx`) com o novo design.
-- **CONCLUÍDO:** Refatoração da `LeaderboardTable` (`src/components/leaderboard/leaderboard-table.tsx`) com o novo design.
-- **CONCLUÍDO:** Refatoração dos componentes `BrazilianTeamBet` e `ChampionTeamBet` com layout gráfico.
-- **CONCLUÍDO:** Refatoração dos modais `PredictionModal`, `BrazilianTeamModal` e `ChampionTeamModal` com o novo design.
-- **CONCLUÍDO:** Atualização do `tailwind.config.ts` e `globals.css` com o novo tema e fontes.
-- **CONCLUÍDO:** Atualização do `layout.tsx` para usar as fontes "Anton" e "Inter".
-
-**Próximo Passo:**
-- Todos os itens de melhoria de UX/UI foram concluídos. O próximo passo seria iniciar os testes e o deploy da aplicação.
+(Esta seção será detalhada conforme o progresso das melhorias.)

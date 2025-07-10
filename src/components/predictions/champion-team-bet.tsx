@@ -32,7 +32,8 @@ const ELIMINATED_TEAMS = [
   "Manchester City",
   "Bayern Munich",
   "Flamengo",
-  "Fluminense"
+  "Fluminense",
+  "Real Madrid"
 ];
 
 export function ChampionTeamBet({ currentUserId }: ChampionTeamBetProps) {

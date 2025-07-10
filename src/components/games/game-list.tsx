@@ -42,6 +42,9 @@ export function GameList({
 				return date;
 			}
 		}
+		// Procurar o dia da final (13/07/2025)
+		const finalDay = uniqueGameDates.find(d => d.getDate() === 13 && d.getMonth() === 6);
+		if (finalDay) return finalDay;
 		// Procurar o próximo dia de semifinal (08 ou 09/07/2025)
 		const semifinalDays = uniqueGameDates.filter(d =>
 			(d.getDate() === 8 || d.getDate() === 9) && d.getMonth() === 6
@@ -111,6 +114,9 @@ export function GameList({
 			/>
 
 			<div className="space-y-4">
+				{(currentDate.getDate() === 13 && currentDate.getMonth() === 6) && (
+					<div className="text-center text-lg font-bold text-gray-800 mb-2">Final</div>
+				)}
 				{(currentDate.getDate() === 4 || currentDate.getDate() === 5) && currentDate.getMonth() === 6 && (
 					<div className="text-center text-lg font-bold text-gray-800 mb-2">Quartas de Final</div>
 				)}
