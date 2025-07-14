@@ -33,7 +33,8 @@ const ELIMINATED_TEAMS = [
   "Bayern Munich",
   "Flamengo",
   "Fluminense",
-  "Real Madrid"
+  "Real Madrid",
+  "Paris Saint-Germain"
 ];
 
 export function ChampionTeamBet({ currentUserId }: ChampionTeamBetProps) {
@@ -161,49 +162,57 @@ export function ChampionTeamBet({ currentUserId }: ChampionTeamBetProps) {
             Ninguém fez palpite ainda. Seja o primeiro!
           </div>
         ) : (
-          <div className="divide-y divide-gray-200">
-            {groupedBets.map((group) => (
-              <div key={group.team.id} className="p-4 hover:bg-gray-50">
-                <div className="flex items-center gap-4 mb-3">
-                  {group.team.logo_url && (
-                    <Image
-                      src={group.team.logo_url}
-                      alt={group.team.name}
-                      width={40}
-                      height={40}
-                      className="object-contain h-10"
-                    />
-                  )}
-                  <div>
-                    <p className="font-bold text-gray-900">{group.team.name}</p>
-                    <p className="text-sm text-gray-500">
-                      {group.users.length}{" "}
-                      {group.users.length === 1 ? "voto" : "votos"}
-                    </p>
+          <>
+            {/* Mensagem se ninguém votou no campeão */}
+            {groupedBets.every(group => group.team.name !== "Chelsea") && (
+              <div className="bg-yellow-100/60 border border-yellow-300 text-yellow-900 rounded-lg px-4 py-3 mb-4 font-semibold text-center">
+                ⚠️ Ninguém acertou o campeão! O vencedor foi <span className="font-bold">Chelsea</span> 🏆
+              </div>
+            )}
+            <div className="divide-y divide-gray-200">
+              {groupedBets.map((group) => (
+                <div key={group.team.id} className="p-4 hover:bg-gray-50">
+                  <div className="flex items-center gap-4 mb-3">
+                    {group.team.logo_url && (
+                      <Image
+                        src={group.team.logo_url}
+                        alt={group.team.name}
+                        width={40}
+                        height={40}
+                        className="object-contain h-10"
+                      />
+                    )}
+                    <div>
+                      <p className="font-bold text-gray-900">{group.team.name}</p>
+                      <p className="text-sm text-gray-500">
+                        {group.users.length}{" "}
+                        {group.users.length === 1 ? "voto" : "votos"}
+                      </p>
+                    </div>
+                  </div>
+                  <div className="pl-14 space-y-2 max-h-[300px] overflow-y-auto">
+                    {group.users.map((user) => (
+                      <div
+                        key={user.name}
+                        className={`flex items-center gap-2 text-sm text-gray-500 rounded px-2 py-1 ${ELIMINATED_TEAMS.includes(group.team.name) ? "bg-red-100/35" : ""}`}
+                      >
+                        {user.avatar_url && (
+                          <Image
+                            src={user.avatar_url}
+                            alt={user.name || "Usuário"}
+                            width={20}
+                            height={20}
+                            className="rounded-full"
+                          />
+                        )}
+                        <span>{user.name || "Usuário"}</span>
+                      </div>
+                    ))}
                   </div>
                 </div>
-                <div className="pl-14 space-y-2 max-h-[300px] overflow-y-auto">
-                  {group.users.map((user) => (
-                    <div
-                      key={user.name}
-                      className={`flex items-center gap-2 text-sm text-gray-500 rounded px-2 py-1 ${ELIMINATED_TEAMS.includes(group.team.name) ? "bg-red-100/35" : ""}`}
-                    >
-                      {user.avatar_url && (
-                        <Image
-                          src={user.avatar_url}
-                          alt={user.name || "Usuário"}
-                          width={20}
-                          height={20}
-                          className="rounded-full"
-                        />
-                      )}
-                      <span>{user.name || "Usuário"}</span>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            ))}
-          </div>
+              ))}
+            </div>
+          </>
         )}
       </div>
 
